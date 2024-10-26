@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Signup</title>
+    <style>
+        /* Reset Styles and Basic Setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(145deg, #090909, #1a1a3d, #333366);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            color: #e0e0ff;
+        }
+
+        /* Background Animation */
+        .animated-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .animated-background .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(rgba(255, 255, 255, 0.05), transparent);
+            animation: move 12s infinite ease-in-out;
+            opacity: 0.6;
+        }
+
+        .animated-background .circle:nth-child(1) {
+            width: 220px;
+            height: 220px;
+            top: 15%;
+            left: 12%;
+            animation-delay: 0s;
+        }
+
+        .animated-background .circle:nth-child(2) {
+            width: 280px;
+            height: 280px;
+            top: 60%;
+            left: 25%;
+            animation-delay: 4s;
+        }
+
+        .animated-background .circle:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            top: 85%;
+            left: 70%;
+            animation-delay: 8s;
+        }
+
+        @keyframes move {
+            0% {
+                transform: scale(1) translateY(0px);
+            }
+            50% {
+                transform: scale(1.2) translateY(-20px);
+            }
+            100% {
+                transform: scale(1) translateY(0px);
+            }
+        }
+
+        /* Card Container with Glass Effect */
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 50px 40px;
+            width: 380px;
+            max-width: 90%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            text-align: center;
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Title */
+        h2 {
+            color: #ffddff;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input {
+            padding: 12px 15px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid transparent;
+            color: #e0e0ff;
+            font-size: 15px;
+            transition: background 0.3s ease, border-color 0.3s ease;
+            outline: none;
+            box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        input::placeholder {
+            color: rgba(224, 224, 255, 0.7);
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ff77b4;
+            box-shadow: 0 6px 15px rgba(255, 119, 180, 0.3);
+        }
+
+        /* Button Styling */
+        button {
+            background: linear-gradient(145deg, #ff77b4, #ff449f);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 6px 12px rgba(255, 68, 159, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(255, 68, 159, 0.5);
+        }
+
+        button:active {
+            transform: translateY(1px);
+            box-shadow: 0 3px 8px rgba(255, 68, 159, 0.2);
+        }
+
+        /* Shadow Pulsing Animation on Card */
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 20px;
+            background: radial-gradient(circle at center, rgba(255, 68, 159, 0.2), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        /* Footer Message */
+        .footer-text {
+            font-size: 14px;
+            margin-top: 25px;
+            color: rgba(224, 224, 255, 0.7);
+        }
+
+        .footer-text a {
+            color: #ff77b4;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 480px) {
+            .card {
+                padding: 35px 30px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            input,
+            button {
+                font-size: 14px;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Animation -->
+    <div class="animated-background">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <!-- Main Card -->
+    <div class="card">
+        <h2>Sign Up</h2>
+        <form>
+            <input type="text" placeholder="First Name" required>
+            <input type="text" placeholder="Last Name" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="footer-text">
+            Already have an account? <a href="login.html">Login here</a>
+        </div>
+    </div>
+</body>
+
+</html>
